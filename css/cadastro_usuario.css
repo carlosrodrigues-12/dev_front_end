@@ -1,16 +1,97 @@
-/* Mantendo o mesmo estilo da tela de login para consistência */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Estilização geral do corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
-body {
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+/* Container principal do formulário */
+.form-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Título do formulário */
+h1 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Agrupador para cada label e input */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Estilo das etiquetas (labels) */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estilo padrão para campos de texto, email, data e select */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Garante que o padding não afete a largura total */
+}
+
+/* Estilo do agrupador de endereço */
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+/* Título do agrupador de endereço */
+legend {
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+/* Cria um grid para alinhar os campos de endereço */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Faz um item do grid ocupar a largura total */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Botão de salvar */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+button:hover {
+  background-color: #0056b3;
 }
