@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>IMC</title>
+  </head>
+  <body>
+    <div class="imc-container">
+      <h1>IMC</h1>
+      
+      <form id="imc-form">
+        <div class="form-group">
+          <label for="altura">Altura (m): </label>
+          <input type="text" id="altura" placeholder="Ex: 1.75">
+        </div>
+
+        <div class="form-group">
+          <label for="peso">Peso (kg): </label>
+          <input type="text" id="peso" placeholder="Ex: 68.5">
+        </div>
+
+        <div class="button-group">
+          <button type="submit" id="calcular">Calcular</button>
+          <button type="button" id="limpar">Limpar</button>
+        </div>
+      </form>
+
+      <div id="resultado" class="hidden">
+        <h2>Resultado</h2>
+        <div class="resultado-item">
+          <span class="label">Valor do IMC:</span>
+          <span id="valor-imc"></span>
+        </div>
+        <div class="resultado-item">
+          <span class="label">Situação:</span>
+          <span id="situacao"></span>
+        </div>
+        <div class="resultado-item">
+          <span class="label">Grau de Obesidade:</span>
+          <span id="grau-obesidade"></span>
+        </div>
+      </div>
+
+      <div class="tabela-container">
+        <h2>Tabela de Referência de IMC</h2>
+        <table id="tabela-imc">
+          <thead>
+            <tr>
+              <th>IMC</th>
+              <th>Classificação</th>
+              <th>Grau de Obesidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Menor que 16</td>
+              <td>Magreza grave</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Entre 16 e 16,9</td>
+              <td>Magreza moderada</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Entre 17 e 18,5</td>
+              <td>Magreza leve</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Entre 18,6 e 24,9</td>
+              <td>Peso ideal</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Entre 25 e 29,9</td>
+              <td>Sobrepeso</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Entre 30 e 34,9</td>
+              <td>Obesidade</td>
+              <td>I</td>
+            </tr>
+            <tr>
+              <td>Entre 35 e 39,9</td>
+              <td>Obesidade severa</td>
+              <td>II</td>
+            </tr>
+            <tr>
+              <td>Maior que 40</td>
+              <td>Obesidade mórbida</td>
+              <td>III</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
