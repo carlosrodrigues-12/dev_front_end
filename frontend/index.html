@@ -55,11 +55,25 @@
                     </svg>
                 </button>
             </div>
-            <div class="relative mb-4">
-                <input type="text" placeholder="Buscar notas..." class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+            <div class="relative mb-4 flex gap-2 items-center">
+                <input type="text" id="search-input" placeholder="Buscar notas..." class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
+                <select id="filter-category" class="p-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Todas Categorias</option>
+                    <option value="Projeto">Projeto</option>
+                    <option value="Pessoal">Pessoal</option>
+                    <option value="Estudo">Estudo</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Financeiro">Financeiro</option>
+                </select>
+                <select id="filter-status" class="p-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Todos Status</option>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Em Andamento">Em Andamento</option>
+                    <option value="Concluído">Concluído</option>
+                </select>
             </div>
             
             <!-- Painéis de status -->
