@@ -1,4 +1,4 @@
-# Atividade 01
+# Projeto final
 
 **Disciplina:** Desenvolvedor Front-end
 **Professor:** Reinaldo de Souza Junior
