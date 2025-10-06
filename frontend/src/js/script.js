@@ -55,36 +55,65 @@ function createNoteCard(note) {
     return card;
 }
 
-// Função para carregar as notas do backend e popular o dashboard
+let allNotes = [];
+
 function loadNotes() {
     fetch('http://localhost:3001/api/notes')
         .then(response => response.json())
         .then(notes => {
-            const pendingList = document.getElementById('pending-list');
-            const inProgressList = document.getElementById('in-progress-list');
-            const doneList = document.getElementById('done-list');
-            
-            // Limpa os contêineres para evitar duplicação
-            pendingList.innerHTML = '';
-            inProgressList.innerHTML = '';
-            doneList.innerHTML = '';
-            
-            notes.forEach(note => {
-                const noteCard = createNoteCard(note);
-                if (note.status === 'Pendente') {
-                    pendingList.appendChild(noteCard);
-                } else if (note.status === 'Em Andamento') {
-                    inProgressList.appendChild(noteCard);
-                } else if (note.status === 'Concluído') {
-                    doneList.appendChild(noteCard);
-                }
-            });
+            allNotes = notes;
+            renderNotes();
         })
         .catch(error => {
             console.error('Erro ao carregar notas:', error);
             showMessage('Erro ao carregar notas. Verifique se o backend está rodando.', null, 'error');
         });
 }
+
+function renderNotes() {
+    const searchText = document.getElementById('search-input')?.value?.toLowerCase() || '';
+    const filterCategory = document.getElementById('filter-category')?.value || '';
+    const filterStatus = document.getElementById('filter-status')?.value || '';
+
+    const pendingList = document.getElementById('pending-list');
+    const inProgressList = document.getElementById('in-progress-list');
+    const doneList = document.getElementById('done-list');
+    pendingList.innerHTML = '';
+    inProgressList.innerHTML = '';
+    doneList.innerHTML = '';
+
+    allNotes
+        .filter(note => {
+            // Filtro por texto (título ou conteúdo)
+            const matchesText = note.titulo.toLowerCase().includes(searchText) ||
+                                note.conteudo.toLowerCase().includes(searchText);
+            // Filtro por categoria
+            const matchesCategory = !filterCategory || (note.categorias && note.categorias.includes(filterCategory));
+            // Filtro por status
+            const matchesStatus = !filterStatus || note.status === filterStatus;
+            return matchesText && matchesCategory && matchesStatus;
+        })
+        .forEach(note => {
+            const noteCard = createNoteCard(note);
+            if (note.status === 'Pendente') {
+                pendingList.appendChild(noteCard);
+            } else if (note.status === 'Em Andamento') {
+                inProgressList.appendChild(noteCard);
+            } else if (note.status === 'Concluído') {
+                doneList.appendChild(noteCard);
+            }
+        });
+}
+
+// Adicione listeners para os filtros
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
+    const filterCategory = document.getElementById('filter-category');
+    const filterStatus = document.getElementById('filter-status');
+    if (searchInput) searchInput.addEventListener('input', renderNotes);
+    if (filterCategory) filterCategory.addEventListener('change', renderNotes);
+    if (filterStatus) filterStatus.addEventListener('change', renderNotes);
+});
 
 function saveNote() {
     const titulo = document.querySelector('#note-screen input[type="text"]').value;
